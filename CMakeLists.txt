@@ -1,19 +1,24 @@
 cmake_minimum_required(VERSION 4.3)
-project(Messenger_client)
+project(freedMe_client)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core WebSockets)
+find_package(Qt6 REQUIRED COMPONENTS Quick)
 
 qt_standard_project_setup()
 
-qt_add_executable(Messenger_client
+qt_add_executable(freedMe_client
         main.cpp
 )
 
-target_link_libraries(Messenger_client
+qt_add_qml_module(freedMe_client
+        URI FreedMe
+        QML_FILES
+            Main.qml
+)
+
+target_link_libraries(freedMe_client
         PRIVATE
-        Qt6::Core
-        Qt6::WebSockets
+            Qt6::Quick
 )
